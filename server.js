@@ -13,21 +13,21 @@ app.set("trust proxy", 1);
 // ✅ CORS (temporary open - will restrict later)
 app.use(
   cors({
-    origin: true,
+    origin: true,   // 🔥 allow all (for now)
     credentials: true,
   })
 );
-
 // ✅ Session base config
 const sessionConfig = {
   secret: process.env.SESSION_SECRET || "your-secret-key",
   resave: false,
   saveUninitialized: false,
+  proxy: true, // 🔥 ADD THIS
   cookie: {
-    secure: true,          // 🔥 REQUIRED for HTTPS (Render)
+    secure: true,
     httpOnly: true,
-    sameSite: "none",      // 🔥 REQUIRED for cross-origin (Vercel → Render)
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    sameSite: "none",
+    maxAge: 24 * 60 * 60 * 1000,
   },
 };
 
