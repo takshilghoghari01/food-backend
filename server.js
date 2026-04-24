@@ -13,7 +13,10 @@ app.set("trust proxy", 1);
 // ✅ CORS (temporary open - will restrict later)
 app.use(
   cors({
-    origin: true,   // 🔥 allow all (for now)
+    origin: [
+      "https://food-admin-two-rho.vercel.app",
+      "https://food-user-rho.vercel.app",
+    ],
     credentials: true,
   })
 );
